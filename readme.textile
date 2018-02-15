@@ -1,0 +1,46 @@
+h1. Patter
+
+This is Patter(n Ruby).
+
+h2. What?
+
+It's a pattern matching thing for Ruby. It's AWFUL.
+
+h2. How?
+
+h3. Patter macro parser
+
+bc.. $ echo <<. >test.pr
+fib(0) is
+  1
+end
+fib(1) is
+  1
+end
+fib(x) is
+  fib(x-1) + fib(x-2)
+end
+
+puts fib(10)
+.
+$ ruby parse.rb <test.pr >test.rb
+$ ruby test.rb
+
+h3. Include Patter
+
+bc.. $ echo <<. >test.rb
+require './patter'
+include Patter
+
+fib = Fun.new
+fib.when(0){1}
+fib.when(1){1}
+fib.when(Var) do |n|
+  fib.call(n-1) + fib.call(n-2)
+end
+.
+$ ruby test.rb
+
+h2. Why?
+
+Clearly the Eldritch horrors are upon us.

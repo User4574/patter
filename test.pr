@@ -1,0 +1,37 @@
+zerop(0) is
+  true
+end
+zerop(_) is
+  false
+end
+
+fib(0) is
+  1
+end
+fib(1) is
+  1
+end
+fib(x) is
+  fib(x-1) + fib(x-2)
+end
+
+add(x, y) is
+  x + y
+end
+
+puts add(1, 2)
+puts fib(5)
+
+putser(string) is
+  puts string
+end
+putser("foo")
+
+varity(_) is
+  puts "one thing"
+end
+varity(_, _) is
+  puts "two things"
+end
+varity(1)
+varity(1,2)
