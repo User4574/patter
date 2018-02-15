@@ -35,3 +35,14 @@ varity(_, _) is
 end
 varity(1)
 varity(1,2)
+
+iffy(true, this, _) is
+  this.call
+end
+iffy(false, _, that) is
+  that.call
+end
+thisser = Proc.new { puts "This" }
+thatter = Proc.new { puts "That" }
+iffy(4>3, thisser, thatter)
+iffy(3>4, thisser, thatter)

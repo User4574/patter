@@ -1,9 +1,10 @@
 def sub_vars(string)
   outvars = []
   blockvars = []
+  notvars = %w(true false nil)
   vars = string.split(",").map(&:strip)
   vars.each do |var|
-    if var =~ /[a-z_][a-zA-Z0-9_]*?/ then
+    if var =~ /[a-z_][a-zA-Z0-9_]*?/ && !notvars.include?(var) then
       outvars << "Patter::Var"
       blockvars << var
     else
