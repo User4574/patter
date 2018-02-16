@@ -32,12 +32,14 @@ bc.. $ echo <<. >test.rb
 require './patter'
 include Patter
 
-fib = Fun.new
+fib = Fun.new(:fibonacci)
 fib.when(0){1}
 fib.when(1){1}
 fib.when(Var) do |n|
-  fib.call(n-1) + fib.call(n-2)
+  fibonacci.call(n-1) + fibonacci.call(n-2)
 end
+
+puts fibonacci(10)
 .
 $ ruby test.rb
 
