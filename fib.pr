@@ -1,0 +1,42 @@
+#fib(0) is
+# 1
+#end
+#fib(1) is
+# 1
+#end
+#fib(n) is
+# fib(n-1) + fib(n-2)
+#end
+
+#puts fib(100)
+
+require 'yaml'
+$memo = {}
+if File.exists?("memofib.yaml") then
+  File.open("memofib.yaml", "r") do |f|
+    mem = YAML.load(f.read)
+    $memo = mem if mem
+  end
+end
+
+memofib(0) is
+  1
+end
+memofib(1) is
+  1
+end
+memofib(n) is
+  if $memo.include?(n) then
+    $memo[n]
+  else
+    f = memofib(n-1) + memofib(n-2)
+    $memo[n] = f
+  end
+end
+
+puts memofib(1000)
+
+File.open("memofib.yaml", "w") do |f|
+  f.write YAML.dump($memo)
+  f.flush
+end
